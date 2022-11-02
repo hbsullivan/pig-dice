@@ -1,3 +1,12 @@
+function startGame() {
+  let leaderboard = new Leaderboard();
+  let playerOne = new Player(0,0)
+  let playerTwo = new Player(0,0)
+  leaderboard.addPlayers("playerOne");
+  leaderboard.addPlayers("playerTwo");
+  return leaderboard
+}
+
 
 function rollDi() {
   min = Math.ceil(1);
@@ -43,10 +52,8 @@ function Leaderboard() {
   this.players = {};
 }
 
-Leaderboard.prototype.addPlayers = function(player)
+Leaderboard.prototype.addPlayers = function(player) {
+  this.players[player] = player;
+}
 
-// // Business Logic for AddressBook ---------
-// function AddressBook() {
-//   this.contacts = {};
-//   this.currentId = 0;
-// }
+
