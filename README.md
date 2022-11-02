@@ -59,8 +59,15 @@ Test: It will return the value of any number rolled betwee 2-6
 Code: rollResult(4)
 Expected Output: 4
 
-Test: It will add a random number from 2-6 to turn total
-Code:
+Describe: Player();
+
+Test: It will create an object with the keys score total & turn total
+Code: const newPlayer = new Player (0,0)
+newPlayer;
+Expected Output: Player { scoreTotal: "0", turnTotal: "0" }
+
+Test: It will add roll result to turn total
+Code: 
 Expected Output
 
 ## Known Bugs
