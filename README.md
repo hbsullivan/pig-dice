@@ -83,6 +83,16 @@ newPlayer.tally(rollValue);
 newPlayer.turnTotal;
 Expected Output: 0
 
+Describe: Player.prototype.hold()
+
+Test: It will set scoreTotal to value of turnTotal
+Code: 
+const newPlayer = new Player (0,8);
+newPlayer.hold();
+Expected Output: 8
+
+Test: 
+
 ## Known Bugs
 
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
