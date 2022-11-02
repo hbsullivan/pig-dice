@@ -20,6 +20,7 @@ function rollResult(roll){
 // This was how we rolled the di and returned the value
 // rollResult(rollDi());
 
+//Player constructor and prototypes
 function Player(scoreTotal, turnTotal) {
   this.scoreTotal = scoreTotal;
   this.turnTotal = turnTotal;
@@ -36,3 +37,16 @@ Player.prototype.tally = function(rollValue) {
 Player.prototype.hold = function(scoreTotal, turnTotal){
   this.scoreTotal = this.turnTotal
 }
+
+//Leaderboard constructor and prototypes
+function Leaderboard() {
+  this.players = {};
+}
+
+Leaderboard.prototype.addPlayers = function(player)
+
+// // Business Logic for AddressBook ---------
+// function AddressBook() {
+//   this.contacts = {};
+//   this.currentId = 0;
+// }

@@ -91,7 +91,17 @@ const newPlayer = new Player (0,8);
 newPlayer.hold();
 Expected Output: 8
 
-Test: 
+Describe: LeaderBoard();
+
+Test: It will create an object to hold Player data
+Code: const leaderBoard = new LeaderBoard ();
+Expected Output: LeaderBoard {players: }
+
+Test: It will create an object to hold Player data
+Code: const leaderBoard = new LeaderBoard (newPlayer1, newPlayer2);
+const newPlayer1 = new Player (0,8);
+const newPlayer2 = new Player (0,12);
+Expected Output: LeaderBoard { newPlayer1 , newPlayer2 }
 
 ## Known Bugs
 
