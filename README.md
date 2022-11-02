@@ -75,6 +75,14 @@ const rollValue = 4;
 newPlayer.tally(rollValue);
 Expected Output: 4
 
+Test: It will zero out turnTotal if roll value is a 0
+Code: 
+const newPlayer = new Player (0,0);
+const rollValue = 0;
+newPlayer.tally(rollValue);
+newPlayer.turnTotal;
+Expected Output: 0
+
 ## Known Bugs
 
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
