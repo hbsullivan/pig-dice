@@ -55,9 +55,9 @@ Test: It should return 0 if a one is rolled
 Code: rollResult(1)
 Expected Output: 0
 
-Test: It will display a random number from 2-6 to turn total
-Code:
-Expected Output
+Test: It will return the value of any number rolled betwee 2-6 
+Code: rollResult(4)
+Expected Output: 4
 
 Test: It will add a random number from 2-6 to turn total
 Code:
