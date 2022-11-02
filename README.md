@@ -1,29 +1,25 @@
-# TEMPLATE
+# Pig Dice
 
-#### By Kirsten Opstad
+#### By Richelle Thorpe, Henry Sullivan, Kirsten Opstad
 
-#### A template for writing a README.md
+#### A game of chance
 
 ## Technologies Used
 
-* Technology1 
-* Technology2 
-* Technology3
+* HTML 
+* CSS 
+* Bootstrap
+* JavaScript
 
 ## Description
 
-This template includes placeholders for:
+Pig Dice is a simple dice game in which, players take turns to roll a single die.
 
-[x] Screenshots
-
-![Screenshots](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.03bZmDGXaBhBYyxxp3Ls3gHaEA%26pid%3DApi&f=1&ipt=e980d57210242747a51c41421e1f09a6de3b1fdaeaadd297496787bb64e80c88&ipo=images)
-
-[x] [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>)
-
-[x] Goals
-1. Goal1
-2. Goal2
-3. Goal3
+Rules of the game (from Wikipedia):
+* Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold":
+  * If the player rolls a 1, they score nothing and it becomes the next player's turn.
+  * If the player rolls any other number, it is added to their turn total and the player's turn continues.
+  * If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
 
 ## Setup/Installation Requirements
 
@@ -31,18 +27,8 @@ This template includes placeholders for:
 * Navigate to the top level of the directory.
 * Open index.html in your browser.
 
-KO Ask Yourself:
-
-[x] Do I need to run a server? 
-
-[x] How should I set up my databases? 
-
-[x] Is there other code this application depends on?
-
-_{Epicodus recommends deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
-
 ## Tests
-
+```
 Describe: rollDi()
 
 Test: It should return a random number from 1-6
@@ -103,11 +89,12 @@ const newPlayer1 = new Player (0,8);
 const newPlayer2 = new Player (0,12);
 Expected Output: LeaderBoard { newPlayer1 , newPlayer2 }
 
-Describe: switchTurn();
+Describe: checkWinner()
 
-Test:
-Code:
-Expected Output
+Test: takes both players' scores and outputs winner
+Code: 
+Expected Output: 
+```
 
 ## Known Bugs
 
@@ -118,6 +105,24 @@ Expected Output
 
 ## License
 
-[Choose License](https://choosealicense.com/)
+MIT License
 
 Copyright (c) 2022 Kirsten Opstad
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

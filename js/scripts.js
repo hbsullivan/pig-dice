@@ -1,12 +1,36 @@
+//Business Logic
+
 function startGame() {
   let leaderboard = new Leaderboard();
   let playerOne = new Player (0,0,1)
   let playerTwo = new Player (0,0,2)
   leaderboard.addPlayers(playerOne);
   leaderboard.addPlayers(playerTwo);
+  // intialize which player is starting
+  // let id = 1;
+  // check if winner
+  // const players = Object.keys(leaderboard)
+  // players.forEach(function(id){
+  //   if(leaderboard.players[id].checkWinner()) {
+  //     return winner = leaderboard.players[id]
+  //   } else { 
+  //     takeATurn(leaderboard, id);
+  //   };
+  // };
+
+  // take a turn
   return leaderboard
 }
-
+function takeATurn(leadboard) {
+ // player can roll until they roll a 1 or push "hold" button
+const rollValue = rollResult(rollDi());
+ // let i = id of whose turn it is
+let id = 1
+ leaderboard.players[id].tally(rollValue);
+//  leaderboard.players[id].hold();
+ leaderboard.players[id].checkWinner();
+//  switchPlayer(id);
+}
 
 function rollDi() {
   min = Math.ceil(1);
@@ -20,14 +44,13 @@ function rollResult(roll){
   let rollValue
   if (roll === 1){
     rollValue = 0
+    // end turn
   } else {
   rollValue = roll;
   }
   return rollValue;
 }
 
-// This was how we rolled the di and returned the value
-// rollResult(rollDi());
 
 //Player constructor and prototypes
 function Player(scoreTotal, turnTotal, id) {
@@ -46,6 +69,7 @@ Player.prototype.tally = function(rollValue) {
 
 Player.prototype.hold = function(){
   this.scoreTotal += this.turnTotal
+  this.turnTotal = 0
 }
 
 //Leaderboard constructor and prototypes
@@ -57,15 +81,22 @@ Leaderboard.prototype.addPlayers = function(player) {
   this.players[player.id] = player;
 }
 
-// // Business Logic for AddressBook ---------
-// function AddressBook() {
-//   this.contacts = {};
-//   this.currentId = 0;
-// }
+Player.prototype.checkWinner = function() {
+  if (this.scoreTotal >= 100) {
+    return true
+    } else {
+    return false
+    }
+  }
 
-// AddressBook.prototype.addContact = function(contact) {
-//   contact.id = this.assignId();
-//   this.contacts[contact.id] = contact;
-// };
+  function switchPlayer(playerId) {
+  if (playerId === "1") {
+    playerId = "2"
+  } else if (playerId === "2") {
+    playerId = "1"
+  }
+  return playerId
+}
 
+//UI Logic
 
