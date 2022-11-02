@@ -1,9 +1,9 @@
 function startGame() {
   let leaderboard = new Leaderboard();
-  let playerOne = new Player(0,0)
-  let playerTwo = new Player(0,0)
-  leaderboard.addPlayers("playerOne");
-  leaderboard.addPlayers("playerTwo");
+  let playerOne = new Player (0,0,1)
+  let playerTwo = new Player (0,0,2)
+  leaderboard.addPlayers(playerOne);
+  leaderboard.addPlayers(playerTwo);
   return leaderboard
 }
 
@@ -30,9 +30,10 @@ function rollResult(roll){
 // rollResult(rollDi());
 
 //Player constructor and prototypes
-function Player(scoreTotal, turnTotal) {
+function Player(scoreTotal, turnTotal, id) {
   this.scoreTotal = scoreTotal;
   this.turnTotal = turnTotal;
+  this.id = id;
 }
 
 Player.prototype.tally = function(rollValue) {
@@ -43,8 +44,8 @@ Player.prototype.tally = function(rollValue) {
   }
 }
 
-Player.prototype.hold = function(scoreTotal, turnTotal){
-  this.scoreTotal = this.turnTotal
+Player.prototype.hold = function(){
+  this.scoreTotal += this.turnTotal
 }
 
 //Leaderboard constructor and prototypes
@@ -53,7 +54,18 @@ function Leaderboard() {
 }
 
 Leaderboard.prototype.addPlayers = function(player) {
-  this.players[player] = player;
+  this.players[player.id] = player;
 }
+
+// // Business Logic for AddressBook ---------
+// function AddressBook() {
+//   this.contacts = {};
+//   this.currentId = 0;
+// }
+
+// AddressBook.prototype.addContact = function(contact) {
+//   contact.id = this.assignId();
+//   this.contacts[contact.id] = contact;
+// };
 
 

@@ -103,6 +103,12 @@ const newPlayer1 = new Player (0,8);
 const newPlayer2 = new Player (0,12);
 Expected Output: LeaderBoard { newPlayer1 , newPlayer2 }
 
+Describe: switchTurn();
+
+Test:
+Code:
+Expected Output
+
 ## Known Bugs
 
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
