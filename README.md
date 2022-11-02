@@ -41,6 +41,28 @@ KO Ask Yourself:
 
 _{Epicodus recommends deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
 
+## Tests
+
+Describe: rollDi()
+
+Test: It should return a random number from 1-6
+Code: rollDi();
+Expected Output: 1 or 2 or 3 or 4 or 5 or 6
+
+Describe: rollResult()
+
+Test: It should return 0 if a one is rolled
+Code: rollResult(1)
+Expected Output: 0
+
+Test: It will display a random number from 2-6 to turn total
+Code:
+Expected Output
+
+Test: It will add a random number from 2-6 to turn total
+Code:
+Expected Output
+
 ## Known Bugs
 
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
