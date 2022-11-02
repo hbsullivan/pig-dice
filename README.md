@@ -66,9 +66,14 @@ Code: const newPlayer = new Player (0,0)
 newPlayer;
 Expected Output: Player { scoreTotal: "0", turnTotal: "0" }
 
+Describe: Player.prototype.tally()
+
 Test: It will add roll result to turn total
 Code: 
-Expected Output
+const newPlayer = new Player (0,0);
+const rollValue = 4;
+newPlayer.tally(rollValue);
+Expected Output: 4
 
 ## Known Bugs
 

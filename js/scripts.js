@@ -24,3 +24,7 @@ function Player(scoreTotal, turnTotal) {
   this.scoreTotal = scoreTotal;
   this.turnTotal = turnTotal;
 }
+
+Player.prototype.tally = function(rollValue) {
+  this.turnTotal += rollValue;
+}
