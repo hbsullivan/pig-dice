@@ -106,8 +106,8 @@ function handleRoll() {
   if (rolledResult === 0) {
     leaderboard.switchPlayer();
     document.getElementById("player-id").innerText = leaderboard.turnId;
-    document.getElementById("turn-value").innerText = "You rolled a 1. Please pass the mouse to the other player :(";
-    document.getElementById("di-value").innerText = "1";
+    document.getElementById("turn-value").innerText = " You rolled a 1. Your turn total is 0. Please pass the mouse to the other player :(";
+    document.getElementById("di-value").innerText = " 1";
     
   } else {
     player.tally(rolledResult);
@@ -127,8 +127,8 @@ let playerScoreElementId = "player" + playerId + "Score";
 document.getElementById(playerScoreElementId).innerText = player.scoreTotal;
 leaderboard.switchPlayer();
 document.getElementById("player-id").innerText = leaderboard.turnId;
-document.getElementById("turn-value").innerText = "Turn Total";
-document.getElementById("di-value").innerText = "Di Value";
+document.getElementById("turn-value").innerText = null;
+document.getElementById("di-value").innerText = null;
 }
 
 function printWinner(winner) {
