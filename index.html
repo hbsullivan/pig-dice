@@ -10,18 +10,20 @@
   <div class="container">
     <!-- Big Play Button -->
     <div class="play-button">
-      <button type="button" class="btn btn-secondary btn-lg btn-block">PLAY</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block" id="play-btn">PLAY</button>
     </div>
     <!-- scoreboard area -->
-    <h2>Player1 Total Score <span id=player1Score></span></h2>
-    <h2>Player2 Total Score <span id=player2Score></span></h2>
-    <!-- gameplay area -->
-    <div id="gameplay">
-      <h3><span id="di-value">Di Value</span></h3>
-      <h5><span id="turn-value">Turn Total</span></h3>
-      <button type="button" class="btn btn-success" id="roll">Roll</button>
-      <button type="button" class="btn btn-warning" id="hold">Hold</button>
-      <p>Ready Player <span id="player-id">X</span></p>
+    <div class="hidden" id="scoreboard">
+      <h2>Player1 Total Score: <span id=player1Score></span></h2>
+      <h2>Player2 Total Score: <span id=player2Score></span></h2>
+      <!-- gameplay area -->
+      <div id="gameplay">
+        <h3><span id="di-value">Di Value</span></h3>
+        <h5><span id="turn-value">Turn Total</span></h3>
+        <button type="button" class="btn btn-success" id="roll">Roll</button>
+        <button type="button" class="btn btn-warning" id="hold">Hold</button>
+        <p>Ready Player <span id="player-id">X</span></p>
+      </div>
     </div>
   </div>
 </body>

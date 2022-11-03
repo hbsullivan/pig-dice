@@ -49,3 +49,22 @@ score total   score total
 
 * How will information be collected from the user? How will it be displayed?
   * User input from button clicks only
+
+## Psuedocode
+1. User clicks [PLAY] to initiate game
+    *Behind the scenes:* 
+      * leaderboard object is created and it contains
+        * 1: player1 object
+        * 2: player2 object
+    -> note: does this *need* to be in global space?
+2. Players take turns until there is a winner
+    * On each turn:
+      * Players roll the di by clicking [ROLL]
+        *Behind the scenes:*
+          * function rollDi gets face value of di
+          * function rollResult determines where it's 0 or a number
+        * **if** the player rolls a 1, they score nothing and it becomes the next player's turn.
+        * **else** the player rolls any other number, it is added to their turn total and the player's turn continues.
+          * **if** a player chooses to "hold"(by clicking [HOLD]), their turn total is added to their score, and it becomes the next player's turn.
+
+      

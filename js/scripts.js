@@ -1,25 +1,11 @@
 //Business Logic
+let leaderboard = new Leaderboard();
 
 function startGame() {
-  let leaderboard = new Leaderboard();
   let playerOne = new Player (0,0,1)
   let playerTwo = new Player (0,0,2)
   leaderboard.addPlayers(playerOne);
   leaderboard.addPlayers(playerTwo);
-  // intialize which player is starting
-  // let id = 1;
-  // check if winner
-  // const players = Object.keys(leaderboard)
-  // players.forEach(function(id){
-  //   if(leaderboard.players[id].checkWinner()) {
-  //     return winner = leaderboard.players[id]
-  //   } else { 
-  //     takeATurn(leaderboard, id);
-  //   };
-  // };
-
-  // take a turn
-  return leaderboard
 }
 function takeATurn(leadboard) {
  // player can roll until they roll a 1 or push "hold" button
@@ -72,31 +58,49 @@ Player.prototype.hold = function(){
   this.turnTotal = 0
 }
 
-//Leaderboard constructor and prototypes
-function Leaderboard() {
-  this.players = {};
-}
-
-Leaderboard.prototype.addPlayers = function(player) {
-  this.players[player.id] = player;
-}
-
 Player.prototype.checkWinner = function() {
   if (this.scoreTotal >= 100) {
     return true
     } else {
     return false
     }
-  }
+}
 
-  function switchPlayer(playerId) {
-  if (playerId === "1") {
-    playerId = "2"
-  } else if (playerId === "2") {
-    playerId = "1"
+//Leaderboard constructor and prototypes
+function Leaderboard() {
+  this.players = {};
+  this.turnId = 1;
+}
+
+Leaderboard.prototype.addPlayers = function(player) {
+  this.players[player.id] = player;
+}
+
+Leaderboard.prototype.switchPlayer = function() {
+  if (this.turnId === 1) {
+    this.turnId = 2
+  } else if (this.turnId === 2) {
+    this.turnId = 1
   }
-  return playerId
 }
 
 //UI Logic
 
+function displayGame(event) {
+  document.getElementById("play-btn").setAttribute("class", "hidden");
+  document.getElementById("scoreboard").removeAttribute("class", "hidden");
+  startGame();
+  document.getElementById("player-id").innerText = leaderboard.turnId;
+}
+
+function handleRoll() {
+  let rollDi = rollDi();
+  let rollResult = rollResult(rollDi);
+
+}
+
+window.addEventListener("load", function(){
+  document.getElementById("play-btn").addEventListener("click", displayGame);
+  let whoseTurn = leaderboard.turnId;
+  let roll = document.getElementById("roll").addEventListener("click", handleRoll(whoseTurn));
+})
