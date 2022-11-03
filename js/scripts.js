@@ -98,16 +98,22 @@ function displayGame(event) {
 function handleRoll() {
   let rolled = rollDi();
   let rolledResult = rollResult(rolled);
-  document.getElementById("di-value").innerText = rolled;
+  document.getElementById("di-value").innerText = null;
   // Get player id
   let playerId = leaderboard.turnId;
   let player = leaderboard.players[playerId];
+  // Display image of di correlating to roll 
+  const imgOne = document.createElement("img")
+  const imgName = "./img/dice/" + rolled + ".png";
+  imgOne.setAttribute("src", imgName)
+  document.getElementById("di-value").append(imgOne)
   // if they roll a 1, switch turns ELSE tally & check winner
   if (rolledResult === 0) {
     leaderboard.switchPlayer();
     document.getElementById("player-id").innerText = leaderboard.turnId;
     document.getElementById("turn-value").innerText = " You rolled a 1. Your turn total is 0. Please pass the mouse to the other player :(";
-    document.getElementById("di-value").innerText = " 1";
+    
+    // document.getElementById("di-value").innerText = " 1";
     
   } else {
     player.tally(rolledResult);

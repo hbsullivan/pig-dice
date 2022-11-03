@@ -8,17 +8,21 @@
 </head>
 <body>
   <div class="container" id="main-content-area">
+    <h1>Pig Dice</h1>
     <!-- Big Play Button -->
     <div class="play-button">
-      <button type="button" class="btn btn-secondary btn-lg btn-block" id="play-btn">PLAY</button>
+      <button type="button" class="btn btn-success btn-lg btn-block" id="play-btn">PLAY</button>
     </div>
     <!-- scoreboard area -->
+    <!-- TODO: Put scoreboard in jumbotron -->
     <div class="hidden" id="scoreboard">
-      <h2>Player 1 Total Score: <span id=player1Score></span></h2>
-      <h2>Player 2 Total Score: <span id=player2Score></span></h2>
+      <div class="jumbotron">
+        <h2>Player 1 Total Score: <span id=player1Score></span></h2>
+        <h2>Player 2 Total Score: <span id=player2Score></span></h2>
+      </div>
       <!-- gameplay area -->
       <div id="gameplay">
-        <h3>Di Value: <span id="di-value"></span></h3>
+        <h3><span id="di-value"></span></h3>
         <h5>Turn Total: <span id="turn-value"></span></h3>
         <button type="button" class="btn btn-success" id="roll">Roll</button>
         <button type="button" class="btn btn-warning" id="hold">Hold</button>

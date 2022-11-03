@@ -1,3 +1,13 @@
 .hidden {
   display: none;
 }
+
+.play-button {
+  margin-top: 300px;
+}
+
+#play-btn{
+  height: 200px;
+  font-size: 100px;
+}
+
