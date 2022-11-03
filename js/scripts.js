@@ -21,15 +21,14 @@ let id = 1
 function rollDi() {
   min = Math.ceil(1);
   max = Math.floor(7);
-  const roll = Math.floor(Math.random() * (max - min) + (min))
-  console.log(roll);
-  return roll
+  const roll = Math.floor(Math.random() * (max - min) + (min));
+  return roll;
 }
 
 function rollResult(roll){
   let rollValue
   if (roll === 1){
-    rollValue = 0
+    rollValue = 0;
     // end turn
   } else {
   rollValue = roll;
@@ -46,7 +45,7 @@ function Player(scoreTotal, turnTotal, id) {
 }
 
 Player.prototype.tally = function(rollValue) {
-  if (rollValue != 0) {
+  if (rollValue !== 0) {
     this.turnTotal += rollValue;
   } else {
     this.turnTotal = 0;
@@ -94,13 +93,18 @@ function displayGame(event) {
 }
 
 function handleRoll() {
-  let rollDi = rollDi();
-  let rollResult = rollResult(rollDi);
-
+  let rolled = rollDi();
+  let rolledResult = rollResult(rolled);
+  document.getElementById("di-value").innerText = rolled;
+  // Get player id
+  let playerId = leaderboard.turnId;
+  let player = leaderboard.players[playerId];
+  player.tally(rolledResult);
+  document.getElementById("turn-value").innerText = player.turnTotal;
 }
 
 window.addEventListener("load", function(){
   document.getElementById("play-btn").addEventListener("click", displayGame);
   let whoseTurn = leaderboard.turnId;
-  let roll = document.getElementById("roll").addEventListener("click", handleRoll(whoseTurn));
+  document.getElementById("roll").addEventListener("click", handleRoll);
 })
