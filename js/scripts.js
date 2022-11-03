@@ -133,15 +133,18 @@ document.getElementById("di-value").innerText = "Di Value";
 
 function printWinner(winner) {
   document.getElementById("gameplay").setAttribute("class", "hidden");
+  document.getElementById("scoreboard").setAttribute("class", "hidden");
   const resultsDiv = document.createElement("div");
   resultsDiv.setAttribute("id", "results");
   const tryAgainButton = document.createElement("button");
+  const brElement = document.createElement("br");
   tryAgainButton.setAttribute("id", "try-again");
   tryAgainButton.setAttribute("class", "btn btn-primary");
   tryAgainButton.innerText = "Play Again!";
   resultsDiv.append("Player " + winner.id + " is the winner!")
+  resultsDiv.append(brElement);
   resultsDiv.append(tryAgainButton);
-  document.getElementById("scoreboard").append(resultsDiv);
+  document.getElementById("main-content-area").append(resultsDiv);
   document.getElementById("try-again").addEventListener("click", resetGame);
 }
 
