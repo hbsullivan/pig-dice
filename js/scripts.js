@@ -92,6 +92,7 @@ function displayGame(event) {
   document.getElementById("play-btn").setAttribute("class", "hidden");
   document.getElementById("scoreboard").removeAttribute("class", "hidden");
   startGame();
+  changeColorWithTurns();
   document.getElementById("player-id").innerText = leaderboard.turnId;
 }
 
@@ -110,11 +111,9 @@ function handleRoll() {
   // if they roll a 1, switch turns ELSE tally & check winner
   if (rolledResult === 0) {
     leaderboard.switchPlayer();
+    changeColorWithTurns();
     document.getElementById("player-id").innerText = leaderboard.turnId;
     document.getElementById("turn-value").innerText = " You rolled a 1. Your turn total is 0. Please pass the mouse to the other player :(";
-    
-    // document.getElementById("di-value").innerText = " 1";
-    
   } else {
     player.tally(rolledResult);
     document.getElementById("turn-value").innerText = player.turnTotal;
@@ -122,19 +121,19 @@ function handleRoll() {
       printWinner(player);
     }
   } 
-  
 }
 
 function handleHold() {
-let playerId = leaderboard.turnId;
-let player = leaderboard.players[playerId];
-player.hold();
-let playerScoreElementId = "player" + playerId + "Score";
-document.getElementById(playerScoreElementId).innerText = player.scoreTotal;
-leaderboard.switchPlayer();
-document.getElementById("player-id").innerText = leaderboard.turnId;
-document.getElementById("turn-value").innerText = null;
-document.getElementById("di-value").innerText = null;
+  let playerId = leaderboard.turnId;
+  let player = leaderboard.players[playerId];
+  player.hold();
+  let playerScoreElementId = "player" + playerId + "Score";
+  document.getElementById(playerScoreElementId).innerText = player.scoreTotal;
+  leaderboard.switchPlayer();
+  changeColorWithTurns()
+  document.getElementById("player-id").innerText = leaderboard.turnId;
+  document.getElementById("turn-value").innerText = null;
+  document.getElementById("di-value").innerText = null;
 }
 
 function printWinner(winner) {
@@ -168,9 +167,18 @@ function emptyDisplayedValues() {
   document.getElementById("turn-value").innerText = null;
 }
 
+function changeColorWithTurns() {
+  const body = document.querySelector("body");
+  if (leaderboard.turnId === 1) {
+    body.style.backgroundColor = "pink";
+  } else {
+    body.style.backgroundColor = "beige";
+  }
+}
+
 window.addEventListener("load", function(){
   document.getElementById("play-btn").addEventListener("click", displayGame);
-  let whoseTurn = leaderboard.turnId;
+  // let whoseTurn = leaderboard.turnId;
   document.getElementById("roll").addEventListener("click", handleRoll);
   document.getElementById("hold").addEventListener("click", handleHold);
   // document.getElementById("try-again").addEventListener("click", resetGame);
