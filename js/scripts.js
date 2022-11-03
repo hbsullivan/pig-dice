@@ -6,6 +6,7 @@ function startGame() {
   let playerTwo = new Player (0,0,2)
   leaderboard.addPlayers(playerOne);
   leaderboard.addPlayers(playerTwo);
+  leaderboard.turnId = 1;
 }
 function takeATurn(leadboard) {
  // player can roll until they roll a 1 or push "hold" button
@@ -58,7 +59,7 @@ Player.prototype.hold = function(){
 }
 
 Player.prototype.checkWinner = function() {
-  if (this.scoreTotal >= 100) {
+  if ((this.scoreTotal + this.turnTotal) >= 100) {
     return true
     } else {
     return false
@@ -81,6 +82,8 @@ Leaderboard.prototype.switchPlayer = function() {
   } else if (this.turnId === 2) {
     this.turnId = 1
   }
+  this.players[1].turnTotal = 0
+  this.players[2].turnTotal = 0
 }
 
 //UI Logic
@@ -99,12 +102,66 @@ function handleRoll() {
   // Get player id
   let playerId = leaderboard.turnId;
   let player = leaderboard.players[playerId];
-  player.tally(rolledResult);
-  document.getElementById("turn-value").innerText = player.turnTotal;
+  // if they roll a 1, switch turns ELSE tally & check winner
+  if (rolledResult === 0) {
+    leaderboard.switchPlayer();
+    document.getElementById("player-id").innerText = leaderboard.turnId;
+    document.getElementById("turn-value").innerText = "Turn Total:";
+    document.getElementById("di-value").innerText = "Di Value:";
+  } else {
+    player.tally(rolledResult);
+    document.getElementById("turn-value").innerText = player.turnTotal;
+    if (player.checkWinner()) {
+      printWinner(player);
+    }
+  } 
+  
+}
+
+function handleHold() {
+let playerId = leaderboard.turnId;
+let player = leaderboard.players[playerId];
+player.hold();
+let playerScoreElementId = "player" + playerId + "Score";
+document.getElementById(playerScoreElementId).innerText = player.scoreTotal;
+leaderboard.switchPlayer();
+document.getElementById("player-id").innerText = leaderboard.turnId;
+document.getElementById("turn-value").innerText = "Turn Total";
+document.getElementById("di-value").innerText = "Di Value";
+}
+
+function printWinner(winner) {
+  document.getElementById("gameplay").setAttribute("class", "hidden");
+  const resultsDiv = document.createElement("div");
+  resultsDiv.setAttribute("id", "results");
+  const tryAgainButton = document.createElement("button");
+  tryAgainButton.setAttribute("id", "try-again");
+  tryAgainButton.setAttribute("class", "btn btn-primary");
+  tryAgainButton.innerText = "Play Again!";
+  resultsDiv.append("Player " + winner.id + " is the winner!")
+  resultsDiv.append(tryAgainButton);
+  document.getElementById("scoreboard").append(resultsDiv);
+  document.getElementById("try-again").addEventListener("click", resetGame);
+}
+
+function resetGame() {
+  document.getElementById("results").innerText = null;
+  emptyDisplayedValues();
+  displayGame();
+  document.getElementById("gameplay").removeAttribute("class", "hidden");
+}
+
+function emptyDisplayedValues() {
+  document.getElementById("player1Score").innerText = null;
+  document.getElementById("player2Score").innerText = null;
+  document.getElementById("di-value").innerText = null;
+  document.getElementById("turn-value").innerText = null;
 }
 
 window.addEventListener("load", function(){
   document.getElementById("play-btn").addEventListener("click", displayGame);
   let whoseTurn = leaderboard.turnId;
   document.getElementById("roll").addEventListener("click", handleRoll);
+  document.getElementById("hold").addEventListener("click", handleHold);
+  // document.getElementById("try-again").addEventListener("click", resetGame);
 })
